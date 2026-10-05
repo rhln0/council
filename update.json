@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "files": [
     {
       "path": "README.md",
@@ -16,7 +16,7 @@
     },
     {
       "path": "manifest.json",
-      "sha256": "e836e703b703dd0a75d4e5ce599555813ac6f06a7a24d0784c2898cd835c060b"
+      "sha256": "6785a833a2f7926658233b416d41780fa888c2ade2bd2eb5d289aaead97e226e"
     },
     {
       "path": "room.html",
@@ -24,7 +24,7 @@
     },
     {
       "path": "room.js",
-      "sha256": "95e7700a869651f661a3b5fa44947c5be6442dd3e8b8b6a32ba08c6c8fc97f34"
+      "sha256": "f10e148d22a8750a4bea92a0b5399a371a07ee7e916765139f293639de29a984"
     },
     {
       "path": "style.css",
