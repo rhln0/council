@@ -1,4 +1,4 @@
-param([string]$InstallPath = '')
+param([string]$InstallPath = '', [switch]$ForceRepair)
 $ErrorActionPreference = 'Stop'
 try {
  if (-not $InstallPath) {
@@ -16,10 +16,10 @@ try {
  }
  $config = Get-Content $configPath -Raw | ConvertFrom-Json
  if ($config.repository -notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$') { throw 'Invalid repository configuration.' }
- $headers = @{ 'User-Agent' = 'Council-Updater'; 'Accept' = 'application/vnd.github+json' }
+ $headers = @{ 'User-Agent' = 'Council-Updater'; 'Accept' = 'application/vnd.github+json'; 'Cache-Control' = 'no-cache' }
  if ($env:COUNCIL_GITHUB_TOKEN) { $headers.Authorization = "Bearer $env:COUNCIL_GITHUB_TOKEN" }
  $ref = [Uri]::EscapeDataString($config.branch)
- $commit = Invoke-RestMethod -Uri "https://api.github.com/repos/$($config.repository)/commits/$ref" -Headers $headers
+ $commit = Invoke-RestMethod -Uri "https://api.github.com/repos/$($config.repository)/commits/${ref}?refresh=$([DateTimeOffset]::UtcNow.ToUnixTimeSeconds())" -Headers $headers
  $sha = $commit.sha
  if ($sha -notmatch '^[a-f0-9]{40}$') { throw 'Invalid release commit.' }
  $base = "https://raw.githubusercontent.com/$($config.repository)/$sha"
@@ -35,7 +35,13 @@ try {
  if (Test-Path (Join-Path $InstallPath 'manifest.json')) { $target = $InstallPath } else { $target = Join-Path $InstallPath 'council' }
  if (-not (Test-Path (Join-Path $target 'manifest.json'))) { throw 'Council installation is missing.' }
  $stamp = Join-Path $InstallPath 'installed-commit.txt'
- if ((Test-Path $stamp) -and (Get-Content $stamp -Raw).Trim() -eq $sha) { Write-Host 'Council is already up to date.'; exit 0 }
+ $verified = -not $ForceRepair
+ foreach ($file in $release.files) {
+  $installed = Join-Path $target $file.path
+  if (-not (Test-Path $installed)) { $verified = $false; break }
+  if ((Get-FileHash $installed -Algorithm SHA256).Hash.ToLowerInvariant() -ne $file.sha256) { $verified = $false; break }
+ }
+ if ($verified) { Write-Host "Council $($release.version) is already up to date (all files verified)."; exit 0 }
  $stage = Join-Path ([IO.Path]::GetTempPath()) ('council-' + [Guid]::NewGuid())
  New-Item -ItemType Directory $stage | Out-Null
  try {
