@@ -1,9 +1,19 @@
 param([string]$InstallPath = '')
 $ErrorActionPreference = 'Stop'
 try {
- if (-not $InstallPath) { $InstallPath = $PSScriptRoot }
+ if (-not $InstallPath) {
+  $known = Join-Path $env:USERPROFILE 'Downloads\Council-Chrome-Extension\council'
+  if (Test-Path (Join-Path $known 'manifest.json')) { $InstallPath = $known } else { $InstallPath = $PSScriptRoot }
+ }
+ $InstallPath = [IO.Path]::GetFullPath($InstallPath)
+ if (Test-Path (Join-Path $InstallPath 'manifest.json')) { $target = $InstallPath } else { $target = Join-Path $InstallPath 'council' }
+ if (-not (Test-Path (Join-Path $target 'manifest.json'))) { throw "Council was not found at $target. Run this updater from the installed extension folder." }
+ Write-Host "Updating Council in: $target"
  $configPath = Join-Path $InstallPath 'council-updater.json'
- if (-not (Test-Path $configPath)) { throw 'Run Setup-Council.cmd first.' }
+ if (-not (Test-Path $configPath)) {
+  @{repository='rhln0/council';branch='main'} | ConvertTo-Json | Set-Content $configPath -Encoding UTF8
+  Write-Host 'Restored missing updater settings automatically.'
+ }
  $config = Get-Content $configPath -Raw | ConvertFrom-Json
  if ($config.repository -notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$') { throw 'Invalid repository configuration.' }
  $headers = @{ 'User-Agent' = 'Council-Updater'; 'Accept' = 'application/vnd.github+json' }
