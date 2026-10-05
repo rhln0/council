@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.1.6",
+  "version": "0.1.7",
   "files": [
     {
       "path": "README.md",
@@ -12,11 +12,11 @@
     },
     {
       "path": "bridge.js",
-      "sha256": "f5527b4879a34daec542b4743fbba9779af6fd5af10d4b0ebee959cbd8322141"
+      "sha256": "1864175cdad73cf1718d64e15da508c7e0a7eafa29a3d9aea2e48598f026e3c5"
     },
     {
       "path": "manifest.json",
-      "sha256": "2dcf2a77bd64a74f7afe9fba0649e1c5f144a5d5dcac1697d145e6266b098d82"
+      "sha256": "c1f7b1c28129a82356fdd3ce588f67363f5847c2082bab9b655bf0633e149954"
     },
     {
       "path": "room.html",
