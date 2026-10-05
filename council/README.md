@@ -26,3 +26,6 @@ No build step or dependencies. Manifest V3, plain JavaScript/CSS. Adapters are i
 
 ## Updating from 0.1.0
 Replace the extracted extension files, click Reload on Council in chrome://extensions, refresh the ChatGPT/Grok/Gemini tabs, and reload the Council room. Then click Check connections. Refreshing provider tabs is required because the old bridge remains installed until navigation. Version 0.1.1 broadens ChatGPT editor detection, searches open shadow roots, and waits briefly for the composer to mount.
+
+## Version 0.1.6
+Council stays bound to the selected provider tabs and tracks delivered messages per conversation. It sends a short setup once, then only unseen user/peer messages, excluding the provider’s own replies and connection errors. A newly selected conversation starts with the latest human request instead of replaying the full room history. Changed conversations reset that cursor. Provider-side request records are polled by the room; completion no longer depends on a long-lived message callback. Website response selectors remain heuristic and need live validation.

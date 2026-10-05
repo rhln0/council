@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "version": "0.1.5",
+  "version": "0.1.6",
   "files": [
     {
       "path": "README.md",
-      "sha256": "4f32b4949ea10df944f55a8b043d5a5f72ea96718a40531fd814720ea5610103"
+      "sha256": "1f4db9836e774b3d296b201ac51b98a77ecfce3e5c447e1e6691df0bec7a0332"
     },
     {
       "path": "background.js",
@@ -12,11 +12,11 @@
     },
     {
       "path": "bridge.js",
-      "sha256": "74175f1519aef9ab3df6a5cdb2361a35bb9cccfa0089a57ed06266b42c99b24a"
+      "sha256": "f5527b4879a34daec542b4743fbba9779af6fd5af10d4b0ebee959cbd8322141"
     },
     {
       "path": "manifest.json",
-      "sha256": "6785a833a2f7926658233b416d41780fa888c2ade2bd2eb5d289aaead97e226e"
+      "sha256": "2dcf2a77bd64a74f7afe9fba0649e1c5f144a5d5dcac1697d145e6266b098d82"
     },
     {
       "path": "room.html",
@@ -24,7 +24,7 @@
     },
     {
       "path": "room.js",
-      "sha256": "f10e148d22a8750a4bea92a0b5399a371a07ee7e916765139f293639de29a984"
+      "sha256": "3525751900d4066a89bc3fe682db61668112fe5253eeb8b8d59965f52e849d2b"
     },
     {
       "path": "style.css",
