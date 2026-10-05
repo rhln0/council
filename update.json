@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "0.1.2",
+  "version": "0.1.3",
   "files": [
     {
       "path": "README.md",
@@ -12,11 +12,11 @@
     },
     {
       "path": "bridge.js",
-      "sha256": "4b1f45a2a162e7645367fb8057876afa9b23c25b8d705604fb6dcee6e86cd25f"
+      "sha256": "51f5ab589902afe58757619e0c134f07079fb3800388bc34da3a7b34215ec2c0"
     },
     {
       "path": "manifest.json",
-      "sha256": "79f6faf7a256364369a55c673813097222a7ed107edc3e7c47336551bc20d197"
+      "sha256": "06c1c549f32fa6f756fb3e1080e81b1455a2163b172d1f0fa1f2e52ccef675a5"
     },
     {
       "path": "room.html",
@@ -24,7 +24,7 @@
     },
     {
       "path": "room.js",
-      "sha256": "aad63c3af2f81c6751c8ef7188b3be5047bf08e57460a4f560e6b2079b4c8765"
+      "sha256": "ebb1ca9abb784f04738286b07c60a373ffed66000fd1fe1d52219a84da46b6ba"
     },
     {
       "path": "style.css",
