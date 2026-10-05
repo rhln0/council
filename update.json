@@ -1,10 +1,10 @@
 {
   "schema": 1,
-  "version": "0.1.9",
+  "version": "0.2.0",
   "files": [
     {
       "path": "README.md",
-      "sha256": "a560b3d77481e1f8362a50b866c20180eb50f5ae60455ac7499ec29d7b7be457"
+      "sha256": "4f14bfa48eaf1b871d68266a197b6ade77340339293ee965da1c43ea44ebdd09"
     },
     {
       "path": "background.js",
@@ -16,19 +16,19 @@
     },
     {
       "path": "manifest.json",
-      "sha256": "3f64842458ce467715aadbe058ef2cc8b552682b5b65cb69cf1a1f54a4c761a0"
+      "sha256": "bdf550ea961f17f7bd359aec2ff54326502108261b751326a4394d49a106c2f6"
     },
     {
       "path": "room.html",
-      "sha256": "1f482a50f11a9f982b736097f20b15fe11da6d03f7f064dc8ab5810a9f5a69d6"
+      "sha256": "280d62dcc278eacd69a0704697ae9283f37a3fcb14ca117eeee7f467025fecd4"
     },
     {
       "path": "room.js",
-      "sha256": "e306b3178e996854bf090a883cfaf95b3fcc1b883316914cb11eaeba6bdfe07e"
+      "sha256": "0579d80d7777b97bbd1f6e64c9dec072166c3a1490c2a989d732b73b1c6db7bf"
     },
     {
       "path": "style.css",
-      "sha256": "c0e3bc776b3597f5ed9506493ec251ac464d173da66d75cb7c5f561eafc90719"
+      "sha256": "c8698c71f614797cbe2d481268be2c11505c0adead49e89ee2a1bd172a05cb18"
     }
   ]
 }
