@@ -9,12 +9,12 @@
 6. Send a small test question. Replies appear in the room. Click **Continue discussion** to share the collected answers with all selected participants for one further round.
 
 ## How it works
-Each selected provider receives the same snapshot of the group transcript at the start of a round. Calls run concurrently. The next round includes the collected replies, so the models can converse. Use the recipient menu or @ChatGPT / @Grok / @Gemini to direct a message. No background autonomous discussion runs. Stop attempts to stop the provider pages and cancels local collection.
+Each selected provider receives the same snapshot of the group transcript at the start of a round. By default Council brings each selected provider tab forward and collects replies one at a time, then returns to the room. Turn off **Bring provider tabs forward** to run concurrently in background tabs. Keep Chrome visible during foreground collection. The next round includes the collected replies, so the models can converse. Use the recipient menu or @ChatGPT / @Grok / @Gemini to direct a message. No background autonomous discussion runs. Stop attempts to stop the provider pages and cancels local collection.
 
 ## Important prototype limits
 The extension’s website adapters are heuristic and have NOT been verified against live signed-in ChatGPT, Grok, or Gemini sessions. Composer/send selectors and response collection may require adjustment. Grok’s generic message-bubble fallback can misidentify a user bubble; inspect collected replies before continuing. A long reasoning pause can be mistaken for a completed response if the site exposes no generation indicator. Manual reply is available when collection fails. Refresh provider tabs after extension updates.
 
-Only English website button labels are included. The first matching ready tab per provider is used: close extra provider chat tabs for predictable binding. Keep tabs visible if your browser throttles background pages. Start fresh provider chats when clearing the local conversation. Responses have a four-minute collection timeout. A stop may not halt server-side generation. Do not immediately restart while provider pages are still generating.
+Only English website button labels are included. Choose the dedicated provider tab from its dropdown; selection is retained. Keep tabs visible if your browser throttles background pages. Start fresh provider chats when clearing the local conversation. Responses have a ten-minute collection timeout. Collection wakes on DOM changes as well as timed polls. A stop may not halt server-side generation. Do not immediately restart while provider pages are still generating.
 
 This uses existing website sessions, not API keys. Your subscriptions’ normal model access and usage limits apply. This extension does not bypass limits or challenges. Website terms may restrict automation; review the applicable rules before use.
 
@@ -29,3 +29,6 @@ Replace the extracted extension files, click Reload on Council in chrome://exten
 
 ## Version 0.1.6
 Council stays bound to the selected provider tabs and tracks delivered messages per conversation. It sends a short setup once, then only unseen user/peer messages, excluding the provider’s own replies and connection errors. A newly selected conversation starts with the latest human request instead of replaying the full room history. Changed conversations reset that cursor. Provider-side request records are polled by the room; completion no longer depends on a long-lived message callback. Website response selectors remain heuristic and need live validation.
+
+## Version 0.1.9
+Adds foreground collection (enabled by default), retaining the same round snapshot for every participant. Concurrent background mode remains available. DOM changes wake collection, completion uses elapsed quiet time instead of poll counts, and replies have up to ten minutes to finish. Foreground mode restores Council after completion or Stop. Website adapters still need live validation.
