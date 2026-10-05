@@ -35,7 +35,7 @@ try {
    if ((Get-FileHash $dest -Algorithm SHA256).Hash.ToLowerInvariant() -ne $file.sha256) { throw "Checksum mismatch: $($file.path)" }
   }
   $manifest = Get-Content (Join-Path $stage 'manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
-  if ($manifest.name -ne 'Council — AI Group Chat' -or $manifest.manifest_version -ne 3 -or $manifest.version -ne $release.version) { throw 'Invalid Council manifest.' }
+  if ($manifest.name -ne ('Council ' + [char]0x2014 + ' AI Group Chat') -or $manifest.manifest_version -ne 3 -or $manifest.version -ne $release.version) { throw 'Invalid Council manifest.' }
   $backup = Join-Path ([IO.Path]::GetDirectoryName($target.TrimEnd([IO.Path]::DirectorySeparatorChar))) 'council-backup'
   if (Test-Path $backup) { Remove-Item $backup -Recurse -Force }
   New-Item -ItemType Directory $backup | Out-Null
